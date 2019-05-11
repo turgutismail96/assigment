@@ -1,0 +1,129 @@
+#include"stdio.h"
+#include"stdlib.h"
+#include"conio.h"
+#include"iostream.h"
+
+class logoMM
+{
+	char * logoMMFull;
+public:
+	logoMM(){logoMM=NULL;}
+	char * logoMMQuarter(int N);
+	char * logoMMHalf(int N, char *logoMMQuarter);
+	void logoMMFll(int N, char * logoMMHalf);
+	void printLogoMM(int N);
+};
+
+char * logoMM::logoMMQuarter(int N)
+{
+	int i, j;
+	int n=((N*5)-1)/2;
+	char logoMMQuarter[N][n];
+	for(i=0;i<=N;i++)
+	{
+		for(j=0;j<=n;j++)
+		{
+			if(i=0)
+			{
+				if(j>=N&&j<N*2) logoMMQuarter[i][j] = '*';
+				else logoMMQuarter[i][j] = '-';
+			}
+			if else(i>0&&i<((N-1)/2))
+			{
+				if((j>=N-i)&&(j<((N*2)+i))) logoMMQuarter[i][j] = '*';
+				else logoMMQuarter[i][j] = '-';
+			}
+			else
+			{
+				if(((j>=N-i)&&(j<((N*2)-i)))||(j>N+i)) logoMMQuarter[i][j] = '*';
+				else logoMMQuarter[i][j] = '-';
+			}
+		}
+	}
+	return logoMMQuarter[][];
+}
+
+char * logoMM::logoMMHalf(int N, char *logoMMQuarter)
+{
+	int i,j,k=;
+	int n=N*5-1;
+	char logoMMHalf[N][n];
+	for(i=0;i<=N;i++)
+	{
+		k=((N*5-1)/2)-1;
+		for(j=0;j<=n;j++)
+		{
+			if(j>(((N*5)-1)/2))
+			{
+				logoMMHalf[i][j]=logoMMQuarter[i][k];
+				k--;
+			}
+			else logoMMHalf[i][j]=logoMMQuarter[i][j];
+		}
+	}
+	return logoMMHalf[][];
+}
+
+void logoMM::logoMMFll(int N, char * logoMMHalf)
+{
+	int i,j,k;
+	for(i=0;i<=N;i++)
+	{
+		k=0;
+		for(j=0;j<N*10;j++)
+		{
+			if(j=>N*5)
+			{
+				logoMMFull[i][j]=logoMMHalf[i][k];
+				k++;
+			}
+			else logoMMFull[i][j]=logoMMHalf[i][j];
+		}
+	}
+}
+
+void logoMM::printLogoMM(int N)
+{
+	int i,j;
+	for(i=0;i<=N;i++)
+	{
+		cout<<"\n";
+		for(j=0;j<N*10;j++)
+		{
+			cout<<logoMMFull[i][j];
+		}
+	}
+}
+	
+
+int main (int argc, char* argv[])
+{
+	logoMM logo;
+	int N, flag;
+	char *logoMMQuarter, *logoMMHalf;
+	char tryagain;
+	
+	do
+	(
+		N=0;
+		flag=0;
+		tryagain='';
+		while(flag==0)
+		{
+			cout<<"Enter an odd number value for N:";
+			cin>> N;
+			if(N%2=!0&&N>2&&N<10000) flag=1;
+			else cout<< "Your value is incorrect! Please enter another one.\n";
+		}
+		logoMMQuarter = logo.logoMMQuarter(N);
+		logoMMHalf = logo.logoMMHalf(N, logoMMQuarter);
+		logo.logoMMFll(N, logoMMHalf);
+		logo.printLogoMM(N);
+		cout<<"\n\n";
+		cout<<"Do you want to try again? Type Y for Yes or N for No.\n";
+		cin>>tryagain;
+	)while(tryagain=='Y'||tryagain=='y');
+	
+	_getch();
+	return 0;
+}
