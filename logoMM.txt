@@ -28,7 +28,7 @@ char * logoMM::logoMMQrtr(int N)
 				if(j>=N&&j<N*2) logoMMQuarter[i][j] = '*';
 				else logoMMQuarter[i][j] = '-';
 			}
-			if else(i>0&&i<((N-1)/2))
+			if(i>0&&i<((N-1)/2))
 			{
 				if((j>=N-i)&&(j<((N*2)+i))) logoMMQuarter[i][j] = '*';
 				else logoMMQuarter[i][j] = '-';
